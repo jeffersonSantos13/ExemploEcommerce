@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WebAppPI03.Models.Produto>
+
+@{if (Model != null)
+    {
+        if (Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                <div class="col-md-2 col-sm-3 hero-feature" id="layoutprod" style="left:1%;">
+                    <div class="thumbnail" id="imgprod">
+                        @{if (item.imagem != null)
+                            {
+
+                                string imageBase64 = Convert.ToBase64String(item.imagem);
+                                string imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                                <img src="@imageSrc" style="height:220px; width:150px;" class="img-responsive" />
+                            }
+                            else
+                            {
+                                <img src="~/Content/Imagens/produto-sem-imagem.gif" alt="Produto sem imagem" style="height:220px; width:150px;">
+                            }
+                        }
+
+                        <div class="caption">
+                            <h5>@item.nomeProduto</h5>
+                            @if (item.descontoPromocao > 0)
+                            {
+                                decimal decPrec = item.precProduto - (decimal)item.descontoPromocao;
+                                <p class="text-center preco-produto" style="font-weight:bold; font-size:25px;">R$ @decPrec.ToString("0.00")</p>
+
+                            }
+                            else
+                            {
+                                                 <!--Sem desconto no produto-->
+                                <p class="text-center preco-produto" style="font-weight:bold;font-size:25px;">R$ @item.precProduto.ToString("0.00")</p>
+
+                            }
+                            <p>
+                                    <a href="~/Produto/descProduto?id=@item.idProduto" class="btn btn-default" style="margin-left:20%;">Ver detalhes</a>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                                    }
+                                }
+                            }
+}

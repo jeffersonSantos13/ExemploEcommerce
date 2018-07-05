@@ -1,0 +1,9 @@
+﻿@using (@Html.BeginForm(actionName: "Consultar", controllerName: "Produto", method: FormMethod.Get, htmlAttributes: new { @class = "form-search" }))
+{
+    <div class="input-group add-on col-xs-12" style="margin-top: 5%;">
+        <input class="form-control form-search" placeholder="Pesquisar" name="pesquisar" id="pesquisar" type="search">
+        <div class="input-group-btn">
+            <button class="btn btn-default btn-seach" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+        </div>
+    </div>
+}

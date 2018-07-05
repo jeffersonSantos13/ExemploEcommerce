@@ -1,0 +1,88 @@
+﻿@model WebAppPI03.Models.Cliente
+@{
+    ViewBag.Title = "Registre-se!";
+}
+<div class="color-white container">
+    <h2>@ViewBag.Title</h2>
+    <h4>Seus dados</h4>
+    @ViewBag.Resultado
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.nomeCompletoCliente, new { @class = "col-md-2 control-label required" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.nomeCompletoCliente, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.nomeCompletoCliente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.emailCliente, new { @class = "col-md-2 control-label required" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.emailCliente, new { @class = "form-control", type="email" })
+                @Html.ValidationMessageFor(model => model.emailCliente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.senhaCliente, new { @class = "col-md-2 control-label required" })
+            <div class="col-md-4">
+                @Html.PasswordFor(m => m.senhaCliente, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.senhaCliente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label required">Confirme senha </label>
+            <div class="col-md-4">
+                <input type="password" name="confPassword" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.dtNascCliente, new { @class = "col-md-2 control-label required" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.dtNascCliente, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.dtNascCliente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.CPFCliente, new { @class = "col-md-2 control-label required" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.CPFCliente, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CPFCliente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.celularCliente, new { @class = "col-md-2 control-label" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.celularCliente, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.celularCliente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.telComercialCliente, new { @class = "col-md-2 control-label" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.telComercialCliente, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.telComercialCliente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.telResidencialCliente, new { @class = "col-md-2 control-label" })
+
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.telResidencialCliente, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.telResidencialCliente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-danger btn-lg" value="Registrar" />
+                <input type="reset" class="btn btn-danger btn-lg" value="Limpar dados" />
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/script.js"></script>
+}

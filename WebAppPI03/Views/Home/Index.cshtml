@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "Bem-vindo ao Hippo";
+}
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+<body>
+    <div class="container-fluid"  style="width:100%;">
+
+        <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+                <li data-target="#myCarousel" data-slide-to="4"></li>
+                <li data-target="#myCarousel" data-slide-to="5"></li>
+            </ol>
+              
+            <!-- Wrapper for slides -->
+
+             <div class="carousel-inner">
+                <div class="item active ">
+
+                    <img src="~/Content/Imagens/bebidas.jpg" style="width:100%; height:450px;" class="d-block img-fluid" />
+               <div class="carousel-caption text-right">
+                 
+                   <a href="~/Produto/ListaProd?id=6" class="btn btn-lg btn-primary bt-color-red">Clique e confira!</a>
+                </div>
+
+             </div>
+               
+                <div class="item">
+
+                    <img src="~/Content/Imagens/doces.jpg" style="width:100%; height:450px;" />
+                    <div class="carousel-caption text-right">
+                        <a href="~/Produto/ListaProd?id=5" class="btn btn-lg btn-primary bt-color-red">Clique e confira!</a>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <img src="~/Content/Imagens/frios.jpg" style="width:100%; height:450px;" />
+                    <div class="carousel-caption text-right">
+
+                       
+                        <a href="~/Produto/ListaProd?id=1" class="btn btn-lg btn-primary bt-color-red">Clique e confira!</a>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <img src="~/Content/Imagens/hortifruti.jpg" style="width:100%; height:450px;" />
+                    <div class="carousel-caption text-right">
+                                           
+                        <a href="/Produto/ListaProd?id=4" class="btn btn-lg btn-primary bt-color-red">Clique e confira!</a>
+                    </div>
+                </div>
+                <div class="item">
+
+                    <img src="~/Content/Imagens/mercearia.jpg" style="width:100%; height:450px;"/>
+                    <div class="carousel-caption text-right">
+                
+                        <a href="~/Produto/ListaProd?id=3" class="btn btn-lg btn-primary bt-color-red">Clique e confira!</a>
+                    </div>
+                </div>
+
+                <div class="item">
+
+                    <img src="~/Content/Imagens/paes.jpg" style="width:100%; height:450px;" />
+                     <div class="carousel-caption text-right">
+                         <a href="~/Produto/ListaProd?id=2" class="btn btn-lg btn-primary bt-color-red">Clique e confira!</a>
+                    </div>
+                </div>
+
+
+            </div>
+           
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+         </div>
+    </div>
+    <h2 style="text-align:center; color:red; letter-spacing:2px; font-weight:bold; margin:60px; font-size:50px;">Em destaque</h2>
+    <!-- Page Features -->
+    <div>
+
+        @Html.Action("PartialDestaque","Produto")
+      
+
+    </div>
+
+        
+</body>
+
+
+
+
+
+

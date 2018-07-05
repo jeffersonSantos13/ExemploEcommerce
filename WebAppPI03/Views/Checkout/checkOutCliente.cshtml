@@ -1,0 +1,15 @@
+﻿@model WebAppPI03.Models.Cliente
+
+@{
+    ViewBag.Title = "checkOutCliente";
+}
+<div>
+    <div class="panel panel-primary" id="@Model.idCliente">
+        <div class="panel-heading">Seus dados</div>
+        <div class="panel-body" style="height:172px">
+            <p>Comprador:@Model.nomeCompletoCliente</p>
+            <p>Email: @Model.emailCliente</p>
+            <p>CPF: @Model.CPFCliente</p>
+        </div>
+    </div>
+</div>

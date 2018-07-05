@@ -1,0 +1,218 @@
+﻿    @model WebAppPI03.Models.Endereco
+
+<hr>
+
+    <div class="form-group">
+        <h4>Cadastrar Endereço</h4>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.nomeEndereco, htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.nomeEndereco, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nomeEndereco, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.logradouroEndereco, htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.logradouroEndereco, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.logradouroEndereco, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.numeroEndereco, htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.numeroEndereco, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.numeroEndereco, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CEPEndereco, htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.CEPEndereco, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CEPEndereco, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.complementoEndereco, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.complementoEndereco, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.complementoEndereco, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cidadeEndereco, htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.cidadeEndereco, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.cidadeEndereco, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.paisEndereco, htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.paisEndereco, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.paisEndereco, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UFEndereco, htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-4">
+                @{
+                    List<SelectListItem> listItems = new List<SelectListItem>();
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "AC",
+                        Value = "AC"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "AL",
+                        Value = "AL",
+                        Selected = true
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "AP",
+                        Value = "AP"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "AM",
+                        Value = "AM"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "BA",
+                        Value = "BA"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "CE",
+                        Value = "CE"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "DF",
+                        Value = "DF"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "ES",
+                        Value = "ES"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "GO",
+                        Value = "GO"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "MA",
+                        Value = "MA"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "MT",
+                        Value = "MT"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "MS",
+                        Value = "MS"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "MG",
+                        Value = "MG"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "PA",
+                        Value = "PA"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "PB",
+                        Value = "PB"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "PR",
+                        Value = "PR"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "PE",
+                        Value = "PE"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "PI",
+                        Value = "PI"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "RJ",
+                        Value = "RJ"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "RN",
+                        Value = "RN"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "RS",
+                        Value = "RS"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "RO",
+                        Value = "RO"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "RR",
+                        Value = "RR"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "SC",
+                        Value = "SC"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "SP",
+                        Value = "SP"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "SE",
+                        Value = "SE"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "TO",
+                        Value = "TO"
+                    });
+                }
+
+                @Html.DropDownListFor(model => model.UFEndereco, listItems, new { @class = "form-control" })
+            </div>
+        </div>
+      
+
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+
+

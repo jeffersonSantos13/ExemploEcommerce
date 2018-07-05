@@ -1,0 +1,58 @@
+﻿@model WebAppPI03.Models.Produto
+
+<section class="row" style="margin-left:25%; margin-top:5%; margin-bottom:4%;">
+    <div class="col-md-4" >
+        <div class="row">
+            @{
+                string price = Convert.ToDecimal(Model.precProduto - Model.descontoPromocao).ToString("#,##.00");
+
+                if (Model.imagem != null)
+                {
+                    string imageBase64 = Convert.ToBase64String(Model.imagem);
+                    string imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                    <img src="@imageSrc" class="img-responsive"  style="height:310px; width:250px; margin-bottom:10%; margin-right:15%;"/>
+                }
+                else
+                {
+                    <img src="~/Content/Imagens/produto-sem-imagem.gif" style="height:300px; width:250px; margin-right:20%;" />
+                }
+            }
+        </div>
+    </div>
+        <div class="caption">
+            <h1 class="produto-nome-datalhe">@Model.nomeProduto</h1>
+            
+            <div>
+                @if (Model.descontoPromocao > 0)
+                {
+                    decimal decPrec = Model.precProduto * (1 - (decimal)Model.descontoPromocao);
+                    <p class="text-center desconto-prod" style="font-size:15px; margin-right:56%; margin-top:1%; text-decoration:line-through; ">DE: R$ @Model.precProduto.ToString("0.00")</p>
+                    <p class="text-center preco-produto size-32" style="font-size:38px; margin-right:38%; margin-top:1%;">POR: R$ @decPrec.ToString("0.00")</p>
+                }
+                else
+                {
+                    <p class="desconto-prod"></p>
+                    <br />
+                    <p class="text-center preco-produto size-32" style="font-size:42px; margin-right:40%;">R$ @Model.precProduto.ToString("0.00")</p>
+                }
+
+                <div class="row text-center" style="margin-right:38%; margin-top:4%;">
+                    <div class="product-qtd-info">
+                        <span>Quantidade:</span>
+                        <input class="product-qtd" type="text" value="1" maxlength="2">
+                    </div>
+                    <br />
+                    <a href="javascript:;" class="btn btn-default btn-lg bt-color-red add-cart" data-product-id="@Model.idProduto" data-product-name="@Model.nomeProduto" data-product-price="@price">Adicionar ao carrinho</a>
+                    <a href="~/Produto/Carrinho" class="btn btn-default btn-lg bt-color-red">Abrir carrinho</a>
+                </div>
+            </div>
+    </div>
+</section>
+<hr />
+
+    <div class="row col-md-10" style="width:100%;">
+        <h3 class="font-red " style="margin-left:10%"; font-size:40px;">Descrição</h3>
+        <p style="margin-left:12%; font-size:17px; width:80%;">
+            @Model.descProduto
+        </p>
+    </div>

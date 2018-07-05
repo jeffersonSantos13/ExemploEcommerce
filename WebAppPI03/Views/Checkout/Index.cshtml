@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Método de pagamento";
+}
+
+<div class="container">
+    <h2>Finalizando compra</h2>
+    @using (Html.BeginForm("PagamentoBoleto", "Checkout", FormMethod.Post, new { role = "form", @class = "form-metodo" }))
+    {
+        <div class="row">
+
+            <div class="col-md-6">
+                @Html.Action("checkOutCliente", "Checkout")
+            </div>
+            <div class="col-md-6">
+                @Html.Action("checkOutEndereco", "Checkout")
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="row">
+                <h2>@ViewBag.Title</h2>
+
+                <div id="tabs_pagamento">
+                    <ul>
+                        <li><a href="#fragment-1">Cartão de crédito</a></li>
+                        <li><a href="#fragment-2">Boleto Bancário</a></li>
+                    </ul>
+                    <div id="fragment-1">
+                        @Html.Partial("PartialCartao", "Checkout")
+                    </div>
+                    <div id="fragment-2">
+                        @Html.Partial("PartialBoleto", "Checkout")
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    }
+    </div>
+   

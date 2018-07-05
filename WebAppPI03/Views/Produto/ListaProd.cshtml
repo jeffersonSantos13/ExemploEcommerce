@@ -1,0 +1,87 @@
+﻿@model IEnumerable<WebAppPI03.Models.Produto>
+
+@{
+    ViewBag.Title = "Lista de Produtos por Categoria";
+}
+
+<div class="col-md-2" style="background-color:#eee">
+    <ul class="list-group" >
+        <li><a href="#" title="Categorias" class="list-group-item color-red font-white">Categorias</a></li>
+        @Html.Action("PartialCategoria", "Categoria")
+    </ul>
+</div>
+
+<section id="category-products" class="col-md-10">
+    <div class="wrap">
+        <h2 class="title-page">@ViewBag.Mensagem</h2>
+        @if (Model != null)
+        {
+            if (Model.Count() > 0)
+            {
+                <ul class="products" id="produtos">
+                    @foreach (var item in Model)
+                    {
+                        
+                        <li class="product">
+
+                            @{
+                                string imgProduto = string.Empty, nomeProduto = string.Empty;
+                                string price = Convert.ToDecimal(item.precProduto).ToString("#,##.00");
+
+                                if (item.imagem != null)
+                                {
+                                    string base64String = Convert.ToBase64String(item.imagem);
+                                    imgProduto = "data:image/png;base64," + base64String;
+                                    nomeProduto = @item.nomeProduto;
+                                }
+                                else
+                                {
+
+                                    imgProduto = "../../Content/Imagens/produto-sem-imagem.gif";
+                                }
+                            }
+
+                            <a id="product-@item.idProduto" href="~/Produto/descProduto?id=@item.idProduto" data-product-id="@item.idProduto" data-product-name="@item.nomeProduto" data-product-price="@price">
+                                <img src=@imgProduto id="product-image-@item.idProduto" class="product-image" alt="@nomeProduto" title="@nomeProduto" style="height:220px; width:150px; margin-bottom:2%;" />
+
+                                <div class="product-info">
+                                    @{string strNome = item.nomeProduto;
+                                        if (strNome.Length > 20)
+                                        {
+                                            strNome = item.nomeProduto.Substring(0, 20) + "...";
+                                        }
+                                        <p class="product-name">@strNome</p>
+                                    }
+                                    @if (item.descontoPromocao > 0)
+                                    {
+                                        decimal decPrec = item.precProduto - (decimal)item.descontoPromocao;
+                                        <p class="product-desc" style="color:gray; font-size:16px;">R$ @price</p>
+                                            <p class="product-price" style="color:black;">R$ @decPrec.ToString("0.00")</p>
+                                    }
+                                    else
+                                    {
+                                        <br />
+                                            <br />
+                                            <p class="product-price">R$ @price</p>
+                                    }
+                                </div>
+                            </a>
+                            <p style="margin-top: -20px;">
+                                <a href="@Url.Action("descProduto", "Produto", new { id=@item.idProduto }) " class="btn btn-default" style="margin-top: -2px;">Ver detalhes</a>
+                                <a href="@Url.Action("Carrinho", "Produto")" class="add-cart" data-product-id="@item.idProduto" data-product-name="@item.nomeProduto" data-product-price="@price"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                            </p>
+                        </li>
+                                            
+                }
+                </ul>
+
+                    }
+                }
+                else
+                {
+                    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" style="text-align:center;">
+                        <strong>Ops!</strong> Não encontramos nenhum produto
+                    </div>
+                }
+    </div>
+</section>

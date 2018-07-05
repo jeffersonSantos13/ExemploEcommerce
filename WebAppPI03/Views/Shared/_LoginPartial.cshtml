@@ -1,0 +1,48 @@
+﻿@model WebAppPI03.Models.LoginViewModel
+<svg viewBox="0 0 20 14" class="icon" data-toggle="dropdown">
+    <use xlink:href="../user-silhouette.svg#Capa_1"></use>
+</svg>
+<ul id="login-dp" class="dropdown-menu" style="z-index:1000">
+    <li>
+        @if (Request.IsAuthenticated)
+        {
+
+
+            <div class="bottom text-center">
+                <p>Olá @WebAppPI03.Models.Validar.getName()</p>
+                <br />
+                @Html.ActionLink("Logoff", "LogoOff", "Account")
+                @Html.ActionLink("Meu painel", "../Painel", "Painel", new { @class = "btn btn-primary btn-block" })
+            </div>
+
+        }
+        else
+        {
+            <div class="col-xs-12">
+
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "E-mail" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        <!----<input type="email" class="form-control" id="exampleInputEmail2" placeholder="E-mail" required>-->
+                    </div>
+                    <div class="form-group">
+                        @Html.PasswordFor(m => m.Senha, new { @class = "form-control", placeholder = "Senha" })
+                        @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
+                        <!--- <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Senha" required>-->
+                  
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Login" class="btn btn-primary btn-block" />
+                    </div>
+                }
+            </div>
+            <div class="bottom text-center">
+                <p>Novo por aqui?</p>
+                <p>@Html.ActionLink("Cadastre-se aqui", "../Account/Register")</p>
+            </div>
+        }
+    </li>
+</ul>

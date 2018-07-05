@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebAppPI03.Models.Endereco>
+
+<div>
+    @ViewBag.Resultado
+    <hr />
+    @if (Model != null)
+    {
+        if (Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                <div class="col-md-6">
+                    <div class="panel panel-primary border-red">
+                        <div class="panel-heading color-red">
+                            <a href="@Url.Action("DelEnd", "Painel", new { id = item.idEndereco})">
+                                <svg viewBox="0 0 22 14" class="icon"  style="z-index: 999; position: absolute; right: -20px; top: 0px; cursor: pointer;">
+                                    <use xlink:href="~/rubbish-bin.svg#trash"></use>
+
+                                </svg>
+                            </a>
+                            <h4>@item.nomeEndereco</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>End: @item.logradouroEndereco, Nº @item.numeroEndereco</p>
+                            <p>CEP: @item.CEPEndereco</p>
+                            <p>Complemento: @item.complementoEndereco</p>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="col-md-6">
+                <div class="panel panel-primary border-red">
+                    <div class="panel-heading color-red">
+                        <h4>Cadastre um novo endereço</h4>
+                    </div>
+                    <div class="panel-body">
+                        @Html.ActionLink("Clique aqui e cadastra um novo endereço !", "RegisterEnd", new { @class = "text-center" })
+                    </div>
+                </div>
+            </div>
+
+        }
+        else
+        {
+            <div class="col-md-6">
+                <div class="panel panel-primary border-red">
+                    <div class="panel-heading color-red">
+                        <h4>Cadastre seu endereço</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>Você ainda não cadastrou nenhum endereço. Por favor, @Html.ActionLink("Clique aqui e cadastra um novo endereço !", "RegisterEnd", new { @class = "text-center" })></p>
+                    </div>
+                </div>
+            </div>
+
+
+                }
+                }
+
+            </div>

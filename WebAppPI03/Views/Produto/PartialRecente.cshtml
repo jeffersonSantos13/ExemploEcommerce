@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebAppPI03.Models.Produto>
+<div class="row" >
+    <div class="col-xs-12 col-offset-2 cols-sm-12 col-offset-2 col-md-12 col-offset-2 col-lg-10 ">
+    @{if (Model != null)
+        {
+            if (Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <a class="desc-prod" href="~/Produto/descProduto?id=@item.idProduto"
+                       title="Clique aqui para obter os detalhes do produto @item.nomeProduto">
+                        <div class="col-md-3 text-center">
+                            <div class="row">
+
+                                <div class="destaque-img-container">
+                                    @if (item.imagem != null)
+                                    {
+                                        /* Imagem do produto*/
+                                        string imageBase64 = Convert.ToBase64String(item.imagem);
+                                        string imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                                        <img src="@imageSrc" class="img-responsive" />
+                                    }
+                                    else
+                                    {
+                                        <p class="alert-danger">Produto sem imagem disponivel!</p>
+                                    }
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>@item.nomeProduto</p>
+                                @if (item.descontoPromocao > 0)
+                                {
+                                    decimal decPrec = item.precProduto - (decimal)item.descontoPromocao;
+                                    <p class="text-center desconto-prod">DE: R$ @item.precProduto.ToString("0.00")</p>
+                                    <p class="text-center preco-produto">POR: R$ @decPrec.ToString("0.00")</p>
+                                    
+                                }
+                                else
+                                {
+                                                 <!--Sem desconto no produto-->
+                                    <p class="text-center preco-produto">POR: R$ @item.precProduto.ToString("0.00")</p>
+                                }
+                            </div>
+                        </div>
+                        
+                    </a>
+                }
+            }
+        }
+        }
+</div>
+</div>

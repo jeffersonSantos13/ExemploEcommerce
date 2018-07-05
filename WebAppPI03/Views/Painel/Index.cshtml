@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Painel";
+}
+<div class="container">
+    <h2 class="display-4" >Seu painel</h2>
+    <hr />
+    <div id="tabs">
+        <ul>
+            <li><a href="#fragment-1">Endereços</a></li>
+            <li><a href="#fragment-2">Pedidos</a></li>
+            <li><a href="#fragment-3">Meu dados</a></li>
+        </ul>
+        <div id="fragment-1">
+           @Html.Action("PartialEnderecoView","Painel")
+        </div>
+        <div id="fragment-2">            
+            @Html.Action("PartialPedidoView", "Painel")
+        </div>
+        <div id="fragment-3">
+            @Html.Action("PartialClienteView", "Painel")
+        </div>
+     
+    </div>
+</div>

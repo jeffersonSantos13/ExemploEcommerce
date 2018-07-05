@@ -1,0 +1,58 @@
+﻿<section id="cart">
+    <div class="cart-top">
+        @if (Request.IsAuthenticated)
+        {
+            <a href="@Url.Action("Index","Checkout")" id="btn-checkout" class="btn btn-type-3">Comprar</a>
+        }
+        else
+        {
+            <a href="@Url.Action("Login", "Account")" id="btn-checkout" class="btn btn-type-3">Comprar</a>
+        }
+    </div>
+    <div class="cart-header">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="cart-product-photo-title">
+                        Produto
+                    </td>
+                    <td class="cart-product-name-title">
+                    </td>
+                    <td class="cart-product-price-title">
+                        Preço
+                    </td>
+                    <td class="cart-product-qtd-title">
+                        Qtd.
+                    </td>
+                    <td class="cart-product-total-title">
+                        Total
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>    
+    <div class="cart-body">
+        <div class="wrap">
+            <table>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cart-buttons">
+        <a href="@Request.Params["rtn"]" class="btn btn-type-2">Escolher mais produtos</a>
+        @if (Request.IsAuthenticated)
+        {
+            <a href="@Url.Action("Index","Checkout")" id="btn-checkout" class="btn btn-type-3">Comprar</a>
+        }
+        else
+        {
+           <a href="@Url.Action("Login", "Account")" id="btn-checkout" class="btn btn-type-3">Comprar</a>
+        }
+                
+        <div class="cart-total-products-with-freight">
+            <p class="cart-total-products">
+                Total: <span class="cart-total-price-products">R$ <span class="price">0</span></span>
+            </p>
+        </div>
+    </div>
+</section>

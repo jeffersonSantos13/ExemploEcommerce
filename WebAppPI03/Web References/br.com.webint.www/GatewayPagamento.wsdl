@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Checkout">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strNome" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNumCartao" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strVal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodSeg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckoutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckoutResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CheckoutSoapIn">
+    <wsdl:part name="parameters" element="tns:Checkout" />
+  </wsdl:message>
+  <wsdl:message name="CheckoutSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckoutResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GatewayPagamentoSoap">
+    <wsdl:operation name="Checkout">
+      <wsdl:input message="tns:CheckoutSoapIn" />
+      <wsdl:output message="tns:CheckoutSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GatewayPagamentoSoap" type="tns:GatewayPagamentoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Checkout">
+      <soap:operation soapAction="http://tempuri.org/Checkout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GatewayPagamentoSoap12" type="tns:GatewayPagamentoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Checkout">
+      <soap12:operation soapAction="http://tempuri.org/Checkout" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GatewayPagamento">
+    <wsdl:port name="GatewayPagamentoSoap" binding="tns:GatewayPagamentoSoap">
+      <soap:address location="http://www.webint.com.br/WS2/GatewayPagamento.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GatewayPagamentoSoap12" binding="tns:GatewayPagamentoSoap12">
+      <soap12:address location="http://www.webint.com.br/WS2/GatewayPagamento.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,21 @@
+﻿.menu-sidebar-lateral{
+    margin-left: -80px;
+}
+
+.categoria{
+    font-size: 15px;
+    color: #BD0100;
+    font-weight: bold;
+    padding: 7px 10px;
+    display: block;
+}
+
+.list-group-item{
+    padding: 8px 10px;
+    border-bottom-right-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border: none;
+   /* display: none; */
+}

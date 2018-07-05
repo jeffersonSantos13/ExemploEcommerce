@@ -1,0 +1,44 @@
+﻿<div class="row">
+    <div class="form-group form-inline col-md-5" style="margin-left:1%;">
+
+        <h4 style="color: rgb(102, 102, 102)">Boleto Bancário</h4>
+        <label class="control-label" style="color: rgb(102, 102, 102)">Número do cartão</label>
+
+        <input class="form-control" type="text" name="txtCartao" maxlength="16" minlength="2">
+        <label class="control-label" style="color: rgb(102, 102, 102)">Nome impresso no cartão</label>
+        <input class="form-control" type="text" name="txtImpressao">
+
+        <label class="control-label" style="color: rgb(102, 102, 102)">Validade </label>
+            <select>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            <select id="card-year"></select>
+        <br />
+        
+        <label class="control-label" style="color: rgb(102, 102, 102); margin-top:2%;">Código de segurança</label>
+        <input class="form-control" type="text" name="txtCodigo">
+
+        <label class="control-label" style="color: rgb(102, 102, 102);">Parcelas</label>
+        <input class="form-control" type="text" name="txtParcela" maxlength="1">
+        
+        <label class="control-label form-inline" style="color: red; font-size:20px; margin-top:5%;">
+            Total:
+            <span class="cart-total-price-products">R$ <span class="price">0</span></span>
+        </label>
+
+        <div class="col-md-5">
+            <input type="submit" id="btnCartao" class="btn btn-primary btn-block" style="color:#fff; margin-top:20%;" value="Pagar com cartão" />
+        </div>
+    </div>
+</div>

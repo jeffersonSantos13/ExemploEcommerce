@@ -1,0 +1,11 @@
+﻿@model IEnumerable<WebAppPI03.Models.Categoria>
+
+
+       @foreach (var item in Model)
+       {
+
+        <li ><a href="~/Produto/ListaProd?id=@item.idCategoria" title="Clique aqui para listar os produtos desta categoria" class="list-group-item">@item.nomeCategoria</a></li>
+
+       }
+
+

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WebAppPI03.Models.Endereco>
+
+@{
+    ViewBag.Title = "checkOutEndereco";
+}
+
+<div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Endereço de entrega</div>
+        <div class="panel-body" style="height:172px">
+            <p><select id="goro" name="endereco" class="form-control">
+                <option value="0">Selecione o seu endereço</option>
+                @if (Model != null)
+                {
+                    if (Model.Count() > 0)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <option value="@item.idEndereco">@item.logradouroEndereco</option>       
+                        }   
+                    }
+                }
+                </select></p>
+                <div id="panel-body"></div>
+        </div>
+    </div>
+</div>
+    

@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/Imagens/LogoHippo.png" rel="icon" type="image/x-icon" />
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header class="navbar navbar-inverse color-red" style="margin:0;padding:0;">
+        <div class="container">
+            <div class="row" style="z-index:1000">
+                <!---------------Logo------------------>
+                <a href="@Url.Action("Index", "Home")" class="navbar-brand" title="Página Principal"><img src="~/Content/Imagens/LogoHippo.jpg" salt="Logo" style="height:80px; width:80px;" class="img-responsive text-center img-circle" /></a>
+                <div class="col-md-10">
+
+                    <div class="col-md-2 ">
+                        <ul>
+                            <li class="dropdown btn">
+                                @Html.Action("_LoginPartial", "Account")
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-8">
+                        @Html.Partial("PesquisaPartial")
+                    </div>
+                    <!---class="dropdown-toggle hiperlink-color dropdown-toggle btn btn-lg" >Categorias<b class="caret"></b></a>-->
+                    <!-- Carrinho de compras   -->
+                    <div id="droppable" class="content-header-navigation" style="margin-left:20%;">
+                        <a href="~/Produto/Carrinho?rtn=@Request.Url.AbsoluteUri" id="btn-cart" class="btn">
+                            <svg viewBox="0 0 22 14" class="icon">
+                                <use xlink:href="~/svg-icon-carrinho.svg#svgIcon"></use>
+                            </svg>
+
+                            <i class="icon icon-basket"></i>
+                            <span class="cart-count qtdProdutoCarrinho">0</span>
+                        </a>
+                    </div>
+
+
+
+                </div><!---Row-->
+            </div>
+        </div>
+        <!---------------Login------------------>
+    </header>
+    <div col="md-12" id="sub">
+        <div class="container">
+            <div class="navbar-header color-red">
+                <button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!---------------Menu mobile fim------------------>
+            <!---------------Menu default------------------>
+            @{ string id = Request.Params["id"];
+                if (String.IsNullOrEmpty(id)) {
+            <div class="dropdown">
+                <button class="dropbtn btn btn-default btn-sm">Categorias</button>
+                <div class="dropdown-content">
+                    <ul class="list-group">@Html.Action("PartialCategoria", "Categoria")</ul>                  
+                </div>
+            </div>
+            }
+                }
+        </div>
+    </div>
+    <div class="main">
+        <div class="col-md-12" style="right:1%;">
+            <div class="row">
+                @RenderBody()
+                <hr />
+            </div>
+        </div>
+        </div>
+        <!--FOOTER-->
+        <footer class="color-red col-md-12 navbar-bottom">
+            <div class="row">
+
+
+                <div class="col-md-2">
+                    <nav class="col-right">
+                        <ul>
+                            <li>@Html.ActionLink("Home", "Index", "Home", new { @class = "hiperlink-color" })</li>
+                            <li>@Html.ActionLink("Sobre", "About", "Home", new { @class = "hiperlink-color" })</li>
+                            <li>@Html.ActionLink("Contato", "Contact", "Home", new { @class = "hiperlink-color" })  </li>
+                            <li>@Html.ActionLink("Registrar-se", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "hiperlink-color" })</li>
+                            <li>@Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "hiperlink-color" })</li>
+
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-md-2 ">
+                    <nav class="col-left">
+                        <ul></ul>
+
+                    </nav>
+                </div>
+                <ul>
+                    <li class="hiperlink-color" style="margin-right:15%;"><p>Formas de pagamento:</p></li>
+                    <li> <img src="~/Content/Imagens/cartoes.png" height="50" width="300" style="margin-left:22%;" /></li>
+
+                </ul>
+            </div>
+            <p style="margin:0px;"><span class="color-red hiperlink-color">&copy; @DateTime.Now.Year - Todos direitos reservados ao HIPPO</span></p>
+        </footer>
+    
+    <!--FOOTER fim-->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/app")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
